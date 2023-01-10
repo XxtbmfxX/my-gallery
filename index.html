@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1,
+  maximum-scale=5" />
+
+    <link rel="icon" href="devchallenges.png" />
+
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="https://devchallenges.io/" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap"
+      rel="stylesheet" />
+
+    <link rel="stylesheet" href="style.css" />
+
+    <title>Devchallenges</title>
+  </head>
+  <body>
+    <header class="Header"></header>
+    <main class="Main"></main>
+    <div id="grid">
+      <div id="item1"></div>
+      <div id="item2"></div>
+      <div id="item3"></div>
+    </div>
+
+    <footer class="Footer">
+      <small>
+        created by
+        <a href="https://devchallenges.io/portfolio/XxtbmfxX" target="_blank"
+          >Toro</a
+        >
+        -
+        <a href="https://devchallenges.io" target="_blank">dev.Challenges.io</a>
+      </small>
+    </footer>
+    <script>
+      const main = document.querySelector(".Main");
+      const header = document.querySelector(".Header");
+
+      fetch("./data.json")
+        .then((res) => res.json())
+        .then((data) => {
+          //profile pics
+          const cards = document.createElement("section");
+
+          cards.innerHTML = `
+          <div class="Header_top">
+        <img src="${data.profile}" alt="user">
+        <h1>${data.stats.name}</h1>
+        <span>${data.stats.location}</span>
+      </div>
+      <div class="Header_cards">
+        <div class="Header_cards-card">
+          <span>${data.stats.posts}</span>
+          <span>posts</span>
+        </div>
+        <div class="Header_cards-card">
+          <span>${data.stats.followers}</span>
+          <span>Followers</span>
+        </div>
+        <div class="Header_cards-card">
+          <span>${data.stats.following}</span>
+          <span>Following</span>
+        </div>
+      </div>
+          `;
+
+          header.appendChild(cards);
+
+          //images
+          data.images.forEach((link) => {
+            const img = document.createElement("img");
+            img.src = link;
+            const Class = "img" + data.images.indexOf(link).toString();
+            img.className = Class;
+            main.appendChild(img);
+          });
+        });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,18 @@
+{
+  "images": [
+    "photo1.png",
+    "photo2.png",
+    "photo3.png",
+    "photo_4.png",
+    "photo5.png",
+    "photo6.png"
+  ],
+  "profile": "profilePhoto.png",
+  "stats": {
+    "posts": 100,
+    "followers": "2,242",
+    "following": "1,432",
+    "name": "Rodney Cotton",
+    "location": "Helsinki, Finland"
+  }
+}
